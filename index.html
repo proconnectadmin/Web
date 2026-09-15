@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proconnect · Consultora de automatización y digitalización de procesos</title>
+<meta name="description" content="Relevamos cómo trabaja tu empresa hoy, identificamos los procesos que te cuestan tiempo y plata, y los automatizamos. Consultoría e implementación para PyMEs en Argentina.">
+<link rel="canonical" href="https://proconnect.com.ar/">
+<meta property="og:title" content="Proconnect · Automatización y digitalización de procesos">
+<meta property="og:description" content="Consultores de procesos que además implementan. Diagnóstico sin cargo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://proconnect.com.ar/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='4' fill='%23123B5C'/%3E%3Cg stroke='%23fff' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M6 20V4.8'/%3E%3Cpath d='M6.9 4.9 16.4 8.3'/%3E%3Cpath d='M16.4 9.9 6.9 13.3'/%3E%3C/g%3E%3Ccircle cx='6' cy='3.9' r='2' fill='%23fff'/%3E%3Ccircle cx='17.3' cy='9.1' r='2' fill='%232D8F7B'/%3E%3Ccircle cx='6' cy='14.2' r='2' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blanco:#FFFFFF; --gris:#F5F6F7; --grafito:#14181D; --grafito-2:#0D1014;
+  --azul:#123B5C; --acento:#123B5C; --acento-dark:#0B2A42; --texto-2:#5C6672; --linea:#E3E6E9;
+  --wa:#25D366; --wa-dark:#1DA851;
+  --pad:clamp(20px,6vw,120px);
+  --sec:clamp(64px,10vw,150px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--blanco);color:var(--grafito);font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Space Grotesk',system-ui,sans-serif;font-weight:600;letter-spacing:-0.02em;margin:0;text-wrap:pretty}
+p{margin:0}
+a{color:var(--acento);text-decoration:none}
+a:hover{color:var(--azul)}
+img,svg{display:block;max-width:100%}
+.wrap{position:relative;z-index:1}
+section{position:relative;z-index:1}
+
+/* ── fondo animado ── */
+.fondo{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  background-image:radial-gradient(#E9ECEF 1.2px,transparent 1.2px);background-size:30px 30px}
+.fondo .onda{position:absolute;left:-18%;width:136%;height:560px}
+.fondo .o1{top:2%;animation:drift 34s ease-in-out infinite alternate}
+.fondo .o2{top:38%;animation:drift2 44s ease-in-out infinite alternate}
+.fondo .o3{top:72%;animation:drift 38s ease-in-out infinite alternate}
+.campo-fx{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.7}
+@keyframes drift{from{transform:translateX(-70px)}to{transform:translateX(70px)}}
+@keyframes drift2{from{transform:translateX(60px) translateY(12px)}to{transform:translateX(-60px) translateY(-12px)}}
+@keyframes spark{0%{stroke-dashoffset:100;opacity:0}10%{opacity:1}85%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes trace{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes glow{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes core{0%,100%{opacity:.18;transform:scale(1)}50%{opacity:.5;transform:scale(2.2)}}
+.core{transform-box:fill-box;transform-origin:center}
+
+/* ── header ── */
+header{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid var(--linea)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px;padding:0 var(--pad)}
+.logo{display:flex;align-items:center;gap:10px}
+.logo span{font-family:'Space Grotesk';font-weight:600;font-size:21px;letter-spacing:-0.035em;color:var(--grafito)}
+.links{display:flex;align-items:center;gap:32px}
+.links a{font-size:15px;color:var(--grafito)}
+.links a:hover{color:var(--acento)}
+.links a.btn-solid,.links a.btn-solid:hover{color:#fff}
+.btn{display:inline-block;border-radius:6px;font-size:16px;font-weight:500;padding:14px 24px;border:1px solid transparent;cursor:pointer;font-family:inherit}
+.btn-solid{background:var(--acento);color:#fff}
+.btn-solid:hover{background:var(--acento-dark);color:#fff}
+.btn-ghost{border-color:var(--linea);color:var(--grafito)}
+.btn-ghost:hover{border-color:var(--grafito);color:var(--grafito)}
+.nav .btn{padding:11px 20px;font-size:15px}
+.burger{display:none;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer;margin-right:-10px;position:relative}
+.burger-line{position:absolute;left:11px;width:22px;height:2px;border-radius:2px;background:#14181D;transition:transform .28s cubic-bezier(.4,0,.2,1),opacity .2s ease,top .28s cubic-bezier(.4,0,.2,1)}
+.burger-line.l1{top:16px}
+.burger-line.l2{top:22px}
+.burger-line.l3{top:28px}
+.burger.abierto .burger-line.l1{top:22px;transform:rotate(45deg)}
+.burger.abierto .burger-line.l2{opacity:0}
+.burger.abierto .burger-line.l3{top:22px;transform:rotate(-45deg)}
+#menu{max-height:0;opacity:0;overflow:hidden;padding:0 var(--pad);background:#fff;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .28s ease,padding .35s ease}
+#menu.abierto{max-height:480px;opacity:1;padding:12px var(--pad) 24px;border-top:1px solid var(--linea)}
+#menu a{display:block;font-size:17px;color:var(--grafito);padding:14px 0;border-bottom:1px solid var(--linea)}
+#menu a.btn-solid{color:#fff}
+#menu .btn{display:block;text-align:center;margin-top:16px;border-bottom:0}
+
+/* ── layout ── */
+.sec{padding:var(--sec) var(--pad);background:rgba(255,255,255,.2)}
+.sec-gris{background:rgba(245,246,247,.72);border-top:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.sec-oscura{background:var(--grafito);color:#fff}
+.sec-oscura h2,.sec-oscura h3{color:#fff}
+.sec-oscura p{color:#C6CCD3}
+.h2{font-size:clamp(28px,4vw,42px);line-height:1.15}
+.sub{font-size:18px;color:var(--texto-2);max-width:56ch}
+.cabecera{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:56px}
+.linea{height:1px;background:var(--linea);border:0}
+
+/* ── hero ── */
+.hero{display:grid;grid-template-columns:60% 40%;gap:56px;align-items:center;padding:clamp(48px,7vw,104px) var(--pad) clamp(56px,8vw,112px);background:rgba(255,255,255,.2)}
+.hero h1{font-size:clamp(34px,5.2vw,60px);line-height:1.08;letter-spacing:-0.025em;max-width:16ch}
+.hero .sub{margin-top:26px;max-width:62ch;font-size:clamp(17px,1.3vw,18px)}
+.acciones{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.nota{margin-top:20px;font-size:14px;color:var(--texto-2)}
+.hero-grafico{justify-self:center;width:100%;max-width:440px;margin-right:auto;margin-left:0;transform:translateX(-28px)}
+
+/* ── problema ── */
+.problemas{display:grid;grid-template-columns:1fr 1fr;gap:48px 80px}
+.problema{display:flex;gap:20px}
+.problema svg{flex:none;margin-top:2px}
+.problema h3{font-size:20px;margin-bottom:8px}
+.problema p{color:var(--texto-2);max-width:46ch}
+
+/* ── servicios ── */
+.destacado{background:var(--grafito);border-radius:8px;padding:clamp(28px,4vw,52px);display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;color:#fff}
+.destacado h3{font-size:clamp(22px,2.4vw,30px);color:#fff;margin:14px 0 14px}
+.destacado p{color:#C6CCD3;max-width:60ch}
+.kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--acento)}
+.lista{display:flex;flex-direction:column;gap:1px;background:#2B3138;border:1px solid #2B3138;border-radius:6px;overflow:hidden}
+.lista div{background:var(--grafito);padding:16px 20px;display:flex;justify-content:space-between;gap:16px;font-size:15px;color:#fff}
+.lista span{color:var(--texto-2)}
+.servicios{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--linea);border-radius:8px;margin-top:20px;overflow:hidden;background:rgba(255,255,255,.55)}
+.servicio{padding:clamp(24px,3vw,40px);border-right:1px solid var(--linea);border-bottom:1px solid var(--linea)}
+.servicio:nth-child(3n){border-right:0}
+.servicio:nth-last-child(-n+1){border-bottom:0}
+.servicio.ancho{grid-column:span 2}
+.servicio h3{font-size:19px;margin:16px 0 8px}
+.servicio p{font-size:16px;line-height:1.6;color:var(--texto-2);max-width:62ch}
+
+/* ── proceso ── */
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #2B3138}
+.paso{padding:36px 36px 0 0;border-right:1px solid #2B3138;position:relative}
+.paso:last-child{border-right:0;padding-right:0}
+.paso:not(:first-child){padding-left:36px}
+.paso::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--acento)}
+.paso:not(:first-child)::before{left:36px}
+.num{font-family:'Space Grotesk';font-weight:700;font-size:clamp(30px,3.2vw,40px);letter-spacing:-0.03em;color:var(--acento);line-height:1}
+.paso h3{font-size:21px;margin:12px 0 10px}
+.paso p{font-size:16px}
+
+/* ── caso ── */
+.caso{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(32px,6vw,96px)}
+.relato{display:flex;flex-direction:column;gap:32px}
+.relato h3{font-size:20px;color:var(--azul);margin-bottom:10px}
+.relato p{color:var(--texto-2);max-width:66ch}
+.resultados{background:var(--gris);border:1px solid var(--linea);border-radius:8px;padding:clamp(28px,3vw,48px);display:flex;flex-direction:column;gap:32px;align-self:start}
+.dato{font-family:'Space Grotesk';font-weight:700;font-size:clamp(40px,4.6vw,52px);letter-spacing:-0.03em;color:var(--acento);line-height:1}
+.etq{margin-top:8px;font-size:15px;color:var(--texto-2)}
+
+/* ── sectores ── */
+.sectores{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(28px,5vw,80px);align-items:start}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{border:1px solid #D6DADE;border-radius:6px;padding:10px 16px;font-size:15px;background:#fff}
+
+/* ── por qué ── */
+.porque{display:grid;grid-template-columns:repeat(3,1fr)}
+.porque > div{padding:0 40px;border-right:1px solid var(--linea)}
+.porque > div:first-child{padding-left:0}
+.porque > div:last-child{border-right:0;padding-right:0}
+.porque h3{font-size:22px;line-height:1.25;margin-bottom:12px}
+.porque p{color:var(--texto-2)}
+
+/* ── faq ── */
+.faq{display:grid;grid-template-columns:1fr 1.6fr;gap:clamp(28px,5vw,80px);align-items:start}
+.acordeon{border-top:1px solid var(--linea)}
+.item{border-bottom:1px solid var(--linea)}
+.item button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;background:none;border:0;padding:24px 0;cursor:pointer;text-align:left;font-family:'Space Grotesk';font-weight:600;font-size:clamp(17px,1.5vw,20px);letter-spacing:-0.015em;color:var(--grafito)}
+.item button i{font-style:normal;font-size:22px;color:var(--acento);line-height:1;display:inline-block;transition:transform .28s cubic-bezier(.4,0,.2,1)}
+.item.abierto button i{transform:rotate(45deg)}
+.item .r{max-height:0;opacity:0;overflow:hidden;padding:0 0 0;color:var(--texto-2);max-width:66ch;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .3s ease,padding .35s ease}
+.item.abierto .r{max-height:300px;opacity:1;padding:0 0 24px}
+
+/* ── contacto ── */
+.contacto{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px)}
+form{display:flex;flex-direction:column;gap:16px}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.campo{display:flex;flex-direction:column;gap:8px}
+label{font-size:14px;color:#C6CCD3;display:flex;align-items:center;gap:8px}
+label svg{flex:none;opacity:.9}
+input,textarea{background:#1B2027;border:1px solid #2B3138;border-radius:6px;padding:14px;font-size:16px;color:#fff;outline:none;width:100%}
+input:focus,textarea:focus{border-color:var(--acento)}
+textarea{resize:vertical;min-height:110px}
+form .btn{align-self:flex-start;margin-top:4px}
+
+/* ── footer ── */
+footer{background:var(--grafito-2);color:#C6CCD3;padding:72px var(--pad) 32px;position:relative;z-index:1}
+.fcols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+.fcol{display:flex;flex-direction:column;gap:12px}
+.fcol .t{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--texto-2)}
+.fcol a,.fcol span{font-size:15px;color:#C6CCD3}
+.fcol a:hover{color:var(--acento)}
+.legal{margin-top:48px;padding-top:24px;border-top:1px solid #1E242B;font-size:13px;color:var(--texto-2)}
+
+/* ── whatsapp ── */
+.wa{position:fixed;right:24px;bottom:24px;z-index:80;width:60px;height:60px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(18,24,29,.22)}
+.wa:hover{background:var(--wa-dark)}
+.wa svg{width:32px;height:32px}
+
+/* ── responsive ── */
+@media (max-width:1080px){
+  .servicios{grid-template-columns:1fr 1fr}
+  .servicio:nth-child(3n){border-right:1px solid var(--linea)}
+  .servicio:nth-child(2n){border-right:0}
+  .servicio.ancho{grid-column:span 2}
+  .pasos{grid-template-columns:1fr 1fr}
+  .paso{border-bottom:1px solid #2B3138;padding-bottom:32px}
+  .paso:nth-child(2n){border-right:0}
+  .paso:nth-child(n+3){border-bottom:0}
+}
+@media (max-width:900px){
+  .links{display:none}
+  .burger{display:flex}
+  .hero{grid-template-columns:1fr}
+  .hero-grafico{justify-self:start;margin-top:8px;transform:none}
+  .cabecera,.problemas,.destacado,.caso,.sectores,.faq,.contacto{grid-template-columns:1fr;gap:28px}
+  .cabecera{margin-bottom:36px}
+  .porque{grid-template-columns:1fr;gap:28px}
+  .porque > div{padding:0 0 28px;border-right:0;border-bottom:1px solid var(--linea)}
+  .porque > div:last-child{border-bottom:0;padding-bottom:0}
+  .fcols{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media (max-width:640px){
+  body{font-size:17px}
+  .fondo{opacity:.55}
+  .campo-fx{opacity:.5}
+  .sec:not(.sec-gris):not(.sec-oscura),.hero{background:rgba(255,255,255,.32)}
+  .servicios{grid-template-columns:1fr}
+  .servicio,.servicio.ancho{grid-column:span 1;border-right:0}
+  .servicio{border-bottom:1px solid var(--linea)}
+  .servicio:last-child{border-bottom:0}
+  .pasos{grid-template-columns:1fr;border-top:0}
+  .paso{padding:0 0 28px 24px !important;border-right:0;border-bottom:0;border-left:1px solid #2B3138}
+  .paso::before{left:-5px !important;top:6px}
+  .paso:last-child{border-left:1px solid transparent;padding-bottom:0 !important}
+  .fila{grid-template-columns:1fr}
+  .fcols{grid-template-columns:1fr}
+  .wa{right:16px;bottom:16px;width:56px;height:56px}
+  .wa svg{width:30px;height:30px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important}}
+</style>
+</head>
+<body>
+
+<!-- ══ fondo: ondas ══ -->
+<div class="fondo" aria-hidden="true">
+  <svg class="onda o1" viewBox="0 0 2880 560" preserveAspectRatio="none">
+    <path d="M0 320 C 380 170 700 430 1080 300 C 1460 170 1780 420 2160 300 C 2460 205 2680 360 2880 290 L2880 560 L0 560 Z" fill="#123B5C" opacity=".055"></path>
+    <path d="M0 400 C 400 280 660 500 1040 390 C 1420 280 1820 480 2180 380 C 2480 298 2700 420 2880 370 L2880 560 L0 560 Z" fill="#123B5C" opacity=".05"></path>
+    <path d="M0 250 C 420 130 760 330 1120 230 C 1480 130 1860 320 2240 230 C 2520 165 2700 260 2880 220" fill="none" stroke="#123B5C" stroke-width="1.2" opacity=".14"></path>
+  </svg>
+  <svg class="onda o2" viewBox="0 0 2880 560" preserveAspectRatio="none">
+    <path d="M0 360 C 420 230 720 470 1100 340 C 1480 210 1820 450 2200 330 C 2500 235 2700 380 2880 320 L2880 560 L0 560 Z" fill="#123B5C" opacity=".045"></path>
+    <path d="M0 290 C 400 180 780 360 1140 260 C 1500 160 1880 340 2260 250 C 2540 185 2720 280 2880 240" fill="none" stroke="#123B5C" stroke-width="1.2" opacity=".16"></path>
+  </svg>
+  <svg class="onda o3" viewBox="0 0 2880 560" preserveAspectRatio="none">
+    <path d="M0 330 C 360 200 740 440 1120 310 C 1500 180 1840 430 2220 310 C 2520 215 2720 370 2880 300 L2880 560 L0 560 Z" fill="#123B5C" opacity=".05"></path>
+    <path d="M0 420 C 420 300 700 510 1080 400 C 1460 290 1840 490 2220 390 C 2520 310 2720 430 2880 380 L2880 560 L0 560 Z" fill="#123B5C" opacity=".04"></path>
+  </svg>
+</div>
+
+<!-- ══ campo de nodos (se dibuja por JS) ══ -->
+<svg class="campo-fx" id="campo" aria-hidden="true" preserveAspectRatio="none"></svg>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#top" aria-label="Proconnect - inicio">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.6" stroke-linecap="round">
+        <path d="M6 20V4.8"></path><path d="M6.9 4.9 16.4 8.3"></path><path d="M16.4 9.9 6.9 13.3"></path>
+        <circle cx="6" cy="3.9" r="1.9" fill="#123B5C" stroke="none"></circle>
+        <circle cx="17.3" cy="9.1" r="1.9" fill="#123B5C" stroke="none"></circle>
+        <circle cx="6" cy="14.2" r="1.9" fill="#123B5C" stroke="none"></circle>
+      </svg>
+      <span>Proconnect</span>
+    </a>
+    <nav class="links">
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#casos">Casos</a>
+      <a href="#nosotros">Nosotros</a>
+      <a class="btn btn-solid" href="#contacto">Agendá un diagnóstico</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span class="burger-line l1"></span>
+      <span class="burger-line l2"></span>
+      <span class="burger-line l3"></span>
+    </button>
+  </div>
+  <div id="menu">
+    <a href="#servicios">Servicios</a>
+    <a href="#proceso">Cómo trabajamos</a>
+    <a href="#casos">Casos</a>
+    <a href="#nosotros">Nosotros</a>
+    <a class="btn btn-solid" href="#contacto">Agendá un diagnóstico</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div>
+    <h1>Tu equipo no debería perder el día en tareas que puede hacer un sistema.</h1>
+    <p class="sub">Relevamos cómo trabaja tu empresa hoy, identificamos los procesos que te están costando tiempo y plata, y los automatizamos. Sin cambiar todo de golpe y sin proyectos eternos.</p>
+    <div class="acciones">
+      <a class="btn btn-solid" href="#contacto">Agendá un diagnóstico sin costo</a>
+      <a class="btn btn-ghost" href="#proceso">Ver cómo trabajamos</a>
+    </div>
+    <p class="nota">Primera reunión de diagnóstico sin cargo y sin compromiso.</p>
+  </div>
+  <svg class="hero-grafico" viewBox="0 0 440 420" fill="none" role="img" aria-label="Diagrama: planillas, WhatsApp, papeles y mails convergiendo en un flujo ordenado">
+    <g stroke="#E3E6E9" stroke-width="1.5">
+      <path d="M96 62 C 190 62 180 196 236 208"></path>
+      <path d="M62 150 C 170 150 172 200 236 208"></path>
+      <path d="M104 238 C 170 238 190 212 236 208"></path>
+      <path d="M70 330 C 180 330 190 224 236 208"></path>
+    </g>
+    <g stroke="#123B5C" stroke-width="1.8" stroke-linecap="round" fill="none" stroke-dasharray="7 93">
+      <path d="M96 62 C 190 62 180 196 236 208" pathLength="100" style="animation:spark 2.8s linear infinite"></path>
+      <path d="M62 150 C 170 150 172 200 236 208" pathLength="100" style="animation:spark 2.8s linear .7s infinite"></path>
+      <path d="M104 238 C 170 238 190 212 236 208" pathLength="100" style="animation:spark 2.8s linear 1.4s infinite"></path>
+      <path d="M70 330 C 180 330 190 224 236 208" pathLength="100" style="animation:spark 2.8s linear 2.1s infinite"></path>
+    </g>
+    <g fill="#123B5C">
+      <circle cx="96" cy="62" r="3" style="animation:glow 2.8s linear infinite"></circle>
+      <circle cx="62" cy="150" r="3" style="animation:glow 2.8s linear .7s infinite"></circle>
+      <circle cx="104" cy="238" r="3" style="animation:glow 2.8s linear 1.4s infinite"></circle>
+      <circle cx="70" cy="330" r="3" style="animation:glow 2.8s linear 2.1s infinite"></circle>
+    </g>
+    <g stroke="#5C6672" stroke-width="1.5" fill="#FFFFFF">
+      <rect x="20" y="42" width="152" height="40" rx="6"></rect>
+      <rect x="20" y="130" width="120" height="40" rx="6"></rect>
+      <rect x="20" y="218" width="136" height="40" rx="6"></rect>
+      <rect x="20" y="310" width="112" height="40" rx="6"></rect>
+    </g>
+    <g font-family="IBM Plex Sans" font-size="13" fill="#5C6672">
+      <text x="36" y="67">Planillas de Excel</text>
+      <text x="36" y="155">WhatsApp</text>
+      <text x="36" y="243">Papeles y remitos</text>
+      <text x="36" y="335">Mails sueltos</text>
+    </g>
+    <circle class="core" cx="243" cy="208" r="7" fill="#123B5C" style="animation:core 2.8s ease-in-out infinite"></circle>
+    <circle cx="243" cy="208" r="7" fill="#123B5C"></circle>
+    <path d="M250 208 H 286" stroke="#123B5C" stroke-width="1.5"></path>
+    <g stroke="#CFD9D7" stroke-width="1.5">
+      <path d="M354 136 V 164"></path><path d="M354 208 V 236"></path>
+      <path d="M286 208 V 114 H 288"></path><path d="M286 208 V 258 H 288"></path>
+    </g>
+    <g stroke="#123B5C" stroke-width="1.8" stroke-linecap="round" fill="none" stroke-dasharray="18 82">
+      <path d="M286 208 V 114 H 288" pathLength="100" style="animation:trace 2.8s linear .3s infinite"></path>
+      <path d="M354 136 V 164" pathLength="100" style="animation:trace 2.8s linear .9s infinite"></path>
+      <path d="M354 208 V 236" pathLength="100" style="animation:trace 2.8s linear 1.5s infinite"></path>
+      <path d="M286 208 V 258 H 288" pathLength="100" style="animation:trace 2.8s linear 2.1s infinite"></path>
+    </g>
+    <g stroke="#123B5C" stroke-width="1.5" fill="#FFFFFF">
+      <rect x="288" y="92" width="132" height="44" rx="6"></rect>
+      <rect x="288" y="164" width="132" height="44" rx="6"></rect>
+      <rect x="288" y="236" width="132" height="44" rx="6"></rect>
+    </g>
+    <g fill="#123B5C">
+      <circle cx="288" cy="114" r="3.5" style="animation:glow 2.8s linear .6s infinite"></circle>
+      <circle cx="288" cy="186" r="3.5" style="animation:glow 2.8s linear 1.2s infinite"></circle>
+      <circle cx="288" cy="258" r="3.5" style="animation:glow 2.8s linear 1.8s infinite"></circle>
+    </g>
+    <g font-family="IBM Plex Sans" font-size="13" fill="#14181D">
+      <text x="304" y="119">Un solo registro</text>
+      <text x="304" y="191">Flujo automático</text>
+      <text x="304" y="263">Tablero al día</text>
+    </g>
+    <g font-family="IBM Plex Sans" font-size="11" letter-spacing="1.4" fill="#5C6672">
+      <text x="20" y="20">HOY</text><text x="288" y="20">DESPUÉS</text>
+    </g>
+  </svg>
+</section>
+
+<section class="sec sec-gris">
+  <h2 class="h2" style="max-width:18ch;margin-bottom:56px">Si algo de esto te suena, podemos ayudarte</h2>
+  <div class="problemas">
+    <div class="problema">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="1.5"></rect><path d="M3 9h18M9 9v11M15 9v11"></path></svg>
+      <div><h3>La información vive en Excel</h3><p>Planillas que se pisan entre sí, versiones distintas dando vueltas y nadie sabe cuál es la buena.</p></div>
+    </div>
+    <div class="problema">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="13" height="13" rx="1.5"></rect><rect x="8" y="8" width="13" height="13" rx="1.5"></rect></svg>
+      <div><h3>Se hace todo dos veces</h3><p>El mismo dato se carga en tres lugares distintos porque los sistemas no se hablan entre sí.</p></div>
+    </div>
+    <div class="problema">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>
+      <div><h3>No sabés en qué estado está cada cosa</h3><p>Para saber cómo viene una venta, una cobranza o un pedido hay que preguntarle a alguien.</p></div>
+    </div>
+    <div class="problema">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><path d="M4 6h10M4 12h16M4 18h7"></path><circle cx="19" cy="6" r="2"></circle></svg>
+      <div><h3>El seguimiento depende de la memoria</h3><p>Cobranzas, renovaciones y recordatorios se escapan porque nadie los controla de forma sistemática.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="servicios">
+  <div class="cabecera">
+    <h2 class="h2">Qué hacemos</h2>
+    <p class="sub">Empezamos por entender tu operación. Después implementamos solo lo que te va a mover la aguja.</p>
+  </div>
+  <div class="destacado">
+    <div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M16.2 16.2 21 21"></path><path d="M8 11h6M11 8v6"></path></svg>
+        <span class="kicker">Por acá se empieza</span>
+      </div>
+      <h3>Diagnóstico y relevamiento de procesos</h3>
+      <p>Mapeamos cómo trabaja tu empresa hoy, paso por paso. Identificamos dónde se pierde tiempo, dónde se duplica trabajo y qué procesos conviene atacar primero. Terminás con un plan concreto y priorizado, aunque después no sigas con nosotros.</p>
+    </div>
+    <div class="lista">
+      <div>Relevamiento de circuitos <span>01</span></div>
+      <div>Mapa de procesos actual <span>02</span></div>
+      <div>Puntos de pérdida de tiempo <span>03</span></div>
+      <div>Plan priorizado por impacto <span>04</span></div>
+    </div>
+  </div>
+  <div class="servicios">
+    <div class="servicio">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><path d="M3 7h18v13H3z"></path><path d="M3 11h18"></path><path d="M8 4v3M16 4v3"></path></svg>
+      <h3>Implementación de CRM</h3>
+      <p>Configuramos y adaptamos el CRM a cómo vende y cobra tu empresa, no al revés. Migración de datos, capacitación del equipo y seguimiento posterior incluidos.</p>
+    </div>
+    <div class="servicio">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><path d="M4 8h9a4 4 0 0 1 4 4v4"></path><path d="M14 13l3 3 3-3"></path><circle cx="4" cy="8" r="2"></circle></svg>
+      <h3>Automatización de tareas repetitivas</h3>
+      <p>Todo lo que hoy alguien hace a mano y siempre igual: cargar datos, generar informes, mandar recordatorios, armar documentos. Lo automatizamos.</p>
+    </div>
+    <div class="servicio">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="2.5"></circle><circle cx="18" cy="18" r="2.5"></circle><path d="M8.5 6H15a3 3 0 0 1 3 3v6.5"></path><path d="M6 8.5V15a3 3 0 0 0 3 3h6.5"></path></svg>
+      <h3>Integración de sistemas</h3>
+      <p>Conectamos las herramientas que ya usás para que la información fluya sola entre ellas y deje de cargarse dos veces.</p>
+    </div>
+    <div class="servicio ancho">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"></path></svg>
+      <h3>Tableros de control y reportes</h3>
+      <p>Los números de tu negocio actualizados en tiempo real, en un solo lugar, sin armar la planilla todos los lunes.</p>
+    </div>
+    <div class="servicio">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><rect x="7" y="2" width="10" height="20" rx="2"></rect><path d="M10 6h4M10 10h4M10 14h2"></path></svg>
+      <h3>Digitalización de procesos en papel</h3>
+      <p>Formularios, remitos, checklists y planillas en papel convertidos en flujos digitales accesibles desde el celular.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-oscura" id="proceso">
+  <div class="cabecera">
+    <h2 class="h2">Cómo trabajamos</h2>
+    <p class="sub" style="color:#C6CCD3">Un proceso corto y ordenado. Sabés en todo momento en qué etapa estás y qué sigue.</p>
+  </div>
+  <div class="pasos">
+    <div class="paso"><div class="num">01</div><h3>Diagnóstico</h3><p>Una reunión para entender tu operación y tus dolores de cabeza. Sin costo.</p></div>
+    <div class="paso"><div class="num">02</div><h3>Propuesta</h3><p>Te presentamos qué se puede automatizar, en qué orden, con qué herramientas, cuánto lleva y cuánto cuesta. Todo por escrito.</p></div>
+    <div class="paso"><div class="num">03</div><h3>Implementación</h3><p>Trabajamos por etapas y entregamos funcionando. Arrancamos por lo que más impacto tiene para que veas resultados rápido.</p></div>
+    <div class="paso"><div class="num">04</div><h3>Acompañamiento</h3><p>Capacitamos a tu equipo y quedamos disponibles. Una herramienta que nadie usa no sirve de nada.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="casos">
+  <div class="kicker" style="margin-bottom:20px">Caso de éxito</div>
+  <h2 class="h2" style="max-width:22ch;margin-bottom:56px">Desarrolladora de loteos: gestión de ventas y cobranzas ordenada en un solo sistema</h2>
+  <div class="caso">
+    <div class="relato">
+      <div><h3>El desafío</h3><p>La empresa vendía lotes en cuotas y gestionaba todo entre planillas de Excel y mensajes de WhatsApp. El seguimiento de cada venta dependía de a quién le preguntaras, y las cobranzas se controlaban a mano, cuota por cuota.</p></div>
+      <hr class="linea">
+      <div><h3>Qué hicimos</h3><p>Relevamos el circuito completo de venta y cobranza. Configuramos un CRM adaptado a su forma de trabajar, migramos la información histórica, armamos el seguimiento automático de cuotas y vencimientos, y capacitamos al equipo comercial y administrativo.</p></div>
+      <hr class="linea">
+      <div><h3>El resultado</h3><p>Hoy toda la operación vive en un solo lugar. El equipo sabe en qué estado está cada lote y cada cuota sin tener que preguntar, y el seguimiento de cobranzas dejó de depender de la memoria de una persona.</p></div>
+    </div>
+    <div class="resultados">
+      <div><div class="dato">60%</div><div class="etq">menos de mora</div></div>
+      <hr class="linea">
+      <div><div class="dato">14</div><div class="etq">horas semanales recuperadas</div></div>
+      <hr class="linea">
+      <div><div class="dato">+1.000</div><div class="etq">operaciones migradas</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-gris">
+  <div class="sectores">
+    <div>
+      <h2 class="h2" style="margin-bottom:14px">Con quiénes trabajamos</h2>
+      <p class="sub" style="max-width:44ch">Los procesos cambian según el rubro. La lógica de ordenarlos, no.</p>
+    </div>
+    <div class="chips">
+      <span>Desarrolladoras y loteos</span><span>Inmobiliarias</span><span>Estudios contables</span>
+      <span>Distribuidoras y mayoristas</span><span>Servicios profesionales</span><span>Salud</span>
+      <span>Educación</span><span>Comercio</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="nosotros">
+  <h2 class="h2" style="margin-bottom:56px">Por qué trabajar con nosotros</h2>
+  <div class="porque">
+    <div><h3>Entendemos el negocio antes de tocar un sistema</h3><p>No llegamos con una solución armada. Primero entendemos cómo trabajás y por qué. La herramienta viene después.</p></div>
+    <div><h3>Trabajamos por etapas, con resultados visibles</h3><p>Nada de proyectos de un año sin ver nada. Entregamos funcionando desde las primeras semanas.</p></div>
+    <div><h3>Te dejamos autonomía</h3><p>Capacitamos a tu equipo y documentamos todo. El objetivo es que puedas operar sin depender de nosotros.</p></div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="faq">
+    <h2 class="h2">Preguntas frecuentes</h2>
+    <div class="acordeon">
+      <div class="item abierto"><button type="button" aria-expanded="true">¿Cuánto cuesta un proyecto?<i>+</i></button><p class="r">Depende del alcance, pero siempre lo sabés antes de empezar. La propuesta incluye precio cerrado por etapa, sin sorpresas.</p></div>
+      <div class="item"><button type="button" aria-expanded="false">¿Tengo que cambiar todos mis sistemas?<i>+</i></button><p class="r">No. En general trabajamos sobre lo que ya tenés y lo conectamos mejor. Solo recomendamos cambiar algo cuando el costo de sostenerlo es mayor.</p></div>
+      <div class="item"><button type="button" aria-expanded="false">¿Cuánto tarda?<i>+</i></button><p class="r">Un diagnóstico lleva una o dos semanas. Las primeras automatizaciones suelen estar funcionando dentro del primer mes.</p></div>
+      <div class="item"><button type="button" aria-expanded="false">¿Sirve para una empresa chica?<i>+</i></button><p class="r">Sí. Cuanto más chico el equipo, más pesa cada hora que se va en tareas manuales.</p></div>
+      <div class="item"><button type="button" aria-expanded="false">¿Qué pasa después de la implementación?<i>+</i></button><p class="r">Capacitamos al equipo, documentamos todo y quedamos disponibles para ajustes y nuevas etapas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-oscura" id="contacto">
+  <div class="contacto">
+    <div>
+      <h2 class="h2" style="font-size:clamp(30px,4.2vw,46px);margin-bottom:18px">Empecemos por el diagnóstico</h2>
+      <p class="sub" style="color:#C6CCD3;max-width:52ch">Una reunión de 45 minutos para entender tu operación y decirte con qué conviene arrancar. Sin costo y sin compromiso.</p>
+    </div>
+    <!-- Conectá el action a tu backend, Formspree, Getform, etc. -->
+    <form method="post" action="#">
+      <div class="fila">
+        <div class="campo"><label for="nombre"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>Nombre y apellido</label><input id="nombre" name="nombre" type="text" required></div>
+        <div class="campo"><label for="empresa"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><path d="M6 21V7l6-4 6 4v14"></path><path d="M10 21v-6h4v6"></path><path d="M9 11h.01M9 15h.01M15 11h.01M15 15h.01"></path></svg>Empresa</label><input id="empresa" name="empresa" type="text"></div>
+        <div class="campo"><label for="email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>Email</label><input id="email" name="email" type="email" required></div>
+        <div class="campo"><label for="tel"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A15 15 0 0 1 4 5a1 1 0 0 1 1-1Z"></path></svg>Teléfono</label><input id="tel" name="telefono" type="tel"></div>
+      </div>
+      <div class="campo"><label for="rubro"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path><path d="M3 12h18"></path></svg>Rubro</label><input id="rubro" name="rubro" type="text"></div>
+      <div class="campo"><label for="msg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"></path></svg>Contanos brevemente qué querés resolver</label><textarea id="msg" name="mensaje" rows="4"></textarea></div>
+      <button class="btn btn-solid" type="submit">Solicitar diagnóstico</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="fcols">
+    <div>
+      <div class="logo">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round">
+          <path d="M6 20V4.8"></path><path d="M6.9 4.9 16.4 8.3"></path><path d="M16.4 9.9 6.9 13.3"></path>
+          <circle cx="6" cy="3.9" r="1.9" fill="#FFFFFF" stroke="none"></circle>
+          <circle cx="17.3" cy="9.1" r="1.9" fill="#FFFFFF" stroke="none"></circle>
+          <circle cx="6" cy="14.2" r="1.9" fill="#FFFFFF" stroke="none"></circle>
+        </svg>
+        <span style="color:#fff">Proconnect</span>
+      </div>
+      <p style="margin-top:12px;font-size:15px;color:#8A949E;max-width:38ch">Consultora de automatización y digitalización de procesos.</p>
+    </div>
+    <div class="fcol"><div class="t">Servicios</div><a href="#servicios">Diagnóstico de procesos</a><a href="#servicios">Implementación de CRM</a><a href="#servicios">Automatizaciones</a><a href="#servicios">Tableros de control</a></div>
+    <div class="fcol"><div class="t">Empresa</div><a href="#proceso">Cómo trabajamos</a><a href="#casos">Casos</a><a href="#nosotros">Nosotros</a></div>
+    <div class="fcol"><div class="t">Contacto</div><span>[ email ]</span><span>[ teléfono / WhatsApp ]</span><span>[ ciudad ]</span></div>
+  </div>
+  <div class="legal">Proconnect · proconnect.com.ar · <span id="anio"></span>. Todos los derechos reservados.</div>
+</footer>
+
+<!-- ══════ BOTÓN FLOTANTE DE WHATSAPP ══════
+     Completá el número en formato internacional sin + ni espacios.
+     Ej. Córdoba 351 123-4567  →  5493511234567                      -->
+<a class="wa" id="wa"
+   href="https://wa.me/5490000000000?text=Hola%20Proconnect%2C%20quiero%20coordinar%20un%20diagn%C3%B3stico."
+   target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true">
+    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.24 8.21Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/>
+  </svg>
+</a>
+
+<script>
+document.getElementById('anio').textContent = new Date().getFullYear();
+
+// menú mobile
+var burger = document.getElementById('burger'), menu = document.getElementById('menu');
+burger.addEventListener('click', function(){
+  var abierto = menu.classList.toggle('abierto');
+  burger.classList.toggle('abierto', abierto);
+  burger.setAttribute('aria-expanded', abierto);
+});
+menu.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click', function(){ menu.classList.remove('abierto'); burger.classList.remove('abierto'); burger.setAttribute('aria-expanded', false); });
+});
+
+// acordeón
+document.querySelectorAll('.item button').forEach(function(b){
+  b.addEventListener('click', function(){
+    var item = b.parentElement, abierto = item.classList.toggle('abierto');
+    b.setAttribute('aria-expanded', abierto);
+  });
+});
+
+// campo de nodos y destellos, en los márgenes, sobre toda la página
+(function(){
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var svg = document.getElementById('campo'), NS = 'http://www.w3.org/2000/svg';
+  function dibujar(){
+    var w = window.innerWidth, h = window.innerHeight;
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    svg.innerHTML = '';
+    var esMovil = w < 700;
+    var densidad = esMovil ? 18 : 60, i, x, y, c;
+    for (i = 0; i < densidad; i++){
+      x = (i * 137.5) % (w - 16) + 8;
+      y = (i * 311.7) % (h - 16) + 8;
+      c = document.createElementNS(NS, 'circle');
+      c.setAttribute('cx', x.toFixed(0)); c.setAttribute('cy', y.toFixed(0));
+      c.setAttribute('r', i % 3 === 0 ? 1.5 : 1);
+      c.setAttribute('fill', i % 4 === 0 ? '#3F7EBF' : '#8C9AA6');
+      c.setAttribute('opacity', esMovil ? .28 : .42);
+      c.style.animation = 'glow ' + (6 + i % 5) + 's linear ' + (i % 7) * 0.8 + 's infinite';
+      svg.appendChild(c);
+    }
+    var bandas = w < 700 ? [[6, 54]] : [[16, 106], [w - 106, w - 16]];
+    bandas.forEach(function(b, bi){
+      for (var k = 0; k < 2; k++){
+        var base = 120 + k * (h / 2), pts = [
+          [b[0], base + 220], [b[1], base + 150], [b[0] + 16, base + 70], [b[1] - 12, base]
+        ];
+        var d = pts.slice(1).map(function(p, j){ return 'M' + pts[j][0] + ' ' + pts[j][1] + ' L' + p[0] + ' ' + p[1]; }).join(' ');
+        var base_ = document.createElementNS(NS, 'path');
+        base_.setAttribute('d', d); base_.setAttribute('fill', 'none');
+        base_.setAttribute('stroke', '#6E8794'); base_.setAttribute('stroke-width', 1); base_.setAttribute('opacity', esMovil ? .2 : .32);
+        svg.appendChild(base_);
+        pts.slice(1).forEach(function(p, j){
+          var s = document.createElementNS(NS, 'path');
+          s.setAttribute('d', 'M' + pts[j][0] + ' ' + pts[j][1] + ' L' + p[0] + ' ' + p[1]);
+          s.setAttribute('pathLength', 100); s.setAttribute('fill', 'none');
+          s.setAttribute('stroke', '#3F7EBF'); s.setAttribute('stroke-width', 1.6);
+          s.setAttribute('stroke-linecap', 'round'); s.setAttribute('stroke-dasharray', '9 91');
+          s.style.animation = 'trace ' + (3.6 + j % 3) + 's linear ' + (bi + k + j * 1.1).toFixed(1) + 's infinite';
+          svg.appendChild(s);
+        });
+        pts.forEach(function(p, j){
+          var n = document.createElementNS(NS, 'circle');
+          n.setAttribute('cx', p[0]); n.setAttribute('cy', p[1]);
+          n.setAttribute('r', 2.2 + (j % 3) * 0.5); n.setAttribute('fill', '#123B5C');
+          n.style.animation = 'glow ' + (5 + j % 4) + 's linear ' + (bi + k + j * 0.7).toFixed(1) + 's infinite';
+          svg.appendChild(n);
+        });
+      }
+    });
+  }
+  dibujar();
+  var t; window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(dibujar, 250); });
+})();
+</script>
+</body>
+</html>
