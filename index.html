@@ -513,8 +513,14 @@ footer{background:var(--grafito-2);color:#C6CCD3;padding:72px var(--pad) 32px;po
       <h2 class="h2" style="font-size:clamp(30px,4.2vw,46px);margin-bottom:18px">Empecemos por el diagnóstico</h2>
       <p class="sub" style="color:#C6CCD3;max-width:52ch">Una reunión de 45 minutos para entender tu operación y decirte con qué conviene arrancar. Sin costo y sin compromiso.</p>
     </div>
-    <!-- Conectá el action a tu backend, Formspree, Getform, etc. -->
-    <form method="post" action="#">
+    <!-- Formulario conectado a Web3Forms (gratis, hasta 250 envíos/mes).
+         1) Entrá a https://web3forms.com, ingresá contacto@proconnect.com.ar y creá tu Access Key.
+         2) Reemplazá TU-ACCESS-KEY-AQUI más abajo por la clave que te llegue por correo.
+         3) (Opcional) Cambiá el value de "redirect" por una página de "gracias" propia. -->
+    <form method="post" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="72706be2-6b74-4222-88a1-9d8aa0f31d7e">
+      <input type="hidden" name="subject" value="Nuevo contacto desde la web - ProConnect">
+      <input type="hidden" name="from_name" value="Formulario web ProConnect">
       <div class="fila">
         <div class="campo"><label for="nombre"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"></path></svg>Nombre y apellido</label><input id="nombre" name="nombre" type="text" required></div>
         <div class="campo"><label for="empresa"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#123B5C" stroke-width="1.5" stroke-linecap="round"><path d="M6 21V7l6-4 6 4v14"></path><path d="M10 21v-6h4v6"></path><path d="M9 11h.01M9 15h.01M15 11h.01M15 15h.01"></path></svg>Empresa</label><input id="empresa" name="empresa" type="text"></div>
@@ -546,7 +552,6 @@ footer{background:var(--grafito-2);color:#C6CCD3;padding:72px var(--pad) 32px;po
     </div>
     <div class="fcol"><div class="t">Servicios</div><a href="#servicios">Diagnóstico de procesos</a><a href="#servicios">Implementación de CRM</a><a href="#servicios">Automatizaciones</a><a href="#servicios">Tableros de control</a></div>
     <div class="fcol"><div class="t">Empresa</div><a href="#proceso">Cómo trabajamos</a><a href="#casos">Casos</a><a href="#nosotros">Nosotros</a></div>
-    <div class="fcol"><div class="t">Contacto</div><span>[ email ]</span><span>[ teléfono / WhatsApp ]</span><span>[ ciudad ]</span></div>
   </div>
   <div class="legal">Proconnect · proconnect.com.ar · <span id="anio"></span>. Todos los derechos reservados.</div>
 </footer>
@@ -555,7 +560,7 @@ footer{background:var(--grafito-2);color:#C6CCD3;padding:72px var(--pad) 32px;po
      Completá el número en formato internacional sin + ni espacios.
      Ej. Córdoba 351 123-4567  →  5493511234567                      -->
 <a class="wa" id="wa"
-   href="https://wa.me/5490000000000?text=Hola%20Proconnect%2C%20quiero%20coordinar%20un%20diagn%C3%B3stico."
+   href="https://wa.me/542613457181?text=Hola%20Proconnect%2C%20quiero%20coordinar%20un%20diagn%C3%B3stico."
    target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
   <svg viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true">
     <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.02h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.24 8.21Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/>
